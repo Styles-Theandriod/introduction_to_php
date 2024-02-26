@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donut Shapes in Three.js</title>
+  <style>
+    body { margin: 0; overflow: hidden; }
+    #overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+    <div id="overlay">I love JavaScript</div>
+    <script>
+        // Fullscreen
+        function toggleFullscreen() {
+          if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+          } else {
+            if (document.exitFullscreen) {
+              document.exitFullscreen();
+            }
+          }
+        }
+
+        
+    
+        // Add event listener for fullscreen toggle
+        document.addEventListener('dblclick', toggleFullscreen);
+    
+        // Mouse control
+        var controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
+        controls.dampingFactor = 0.25;
+        controls.screenSpacePanning = false;
+        controls.maxPolarAngle = Math.PI / 2;
+    
+        // Add event listener for mousemove
+        document.addEventListener('mousemove', function (event) {
+          var mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+          var mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+          controls.dispatchEvent({ type: 'mousemove', clientX: mouseX, clientY: mouseY });
+        });
+
+        
+    
+      </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://threejs.org/examples/js/controls/PointerLockControls.js"></script>
+  <script src="./Three.js"></script>
+</body>
+</html>

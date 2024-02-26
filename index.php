@@ -1,3 +1,7 @@
+<?php
+  // Start the session 
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -436,7 +440,14 @@
           foreach ($members as $x => $y) {
             echo "$x : $y <br>";
           }
-          
+
+          // Set the variables 
+          $_SESSION['favcolor'] = "green";
+          $_SESSION['favanimal'] = "green";
+          echo "Session Variables are set"
+
+
+
         ?>
 
 </body>
